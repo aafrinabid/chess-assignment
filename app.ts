@@ -1,3 +1,9 @@
+const express=require('express');
+const app=express();
+const cors=require('cors')
+app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 const chessArray:number[][]=[
 [0,1,2,3,4,5,6,7],
 [0,1,2,3,4,5,6,7],
@@ -89,8 +95,23 @@ if(chessArray[index][number+1]!=undefined && chessArray[index][number+2]!=undefi
       possiblePositions.push(downwardpostion)
     }
   }
-    console.log(possiblePositions)
+return possiblePositions
 
 }
 
-findPossibleMove(3,7)
+app.post('/getmoves',async(req:any,res:any)=>{
+    try{
+        const i=req.body.i
+        const j=req.body.j
+       const result= findPossibleMove(i,j)
+       res.json(result)
+         
+    }catch{
+
+    }
+
+})
+
+app.listen(4000,()=>{
+    console.log('listending 4000')
+})
