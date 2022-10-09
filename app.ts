@@ -1,4 +1,5 @@
-require('dotenv').config()
+import * as dotenv from "dotenv";
+dotenv.config()
 const express =require('express');
 import {Request,Response} from "express"
 const app=express();
