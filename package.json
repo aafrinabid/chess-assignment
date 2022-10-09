@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "node app.ts"
+    "start": "ts-node-esm app.ts"
   },
   "author": "",
   "license": "ISC",
