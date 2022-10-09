@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express =require('express');
 import {Request,Response} from "express"
 const app=express();
@@ -5,6 +6,7 @@ const cors=require('cors')
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
+const PORT=process.env.PORT || 5000
 
 
 const generateArray=()=>{
@@ -118,6 +120,6 @@ app.post('/getmoves',async(req:Request,res:Response)=>{
 
 })
 
-app.listen(4000,()=>{
-    console.log('listending 4000')
+app.listen(PORT,()=>{
+    console.log('listening at',PORT)
 })
