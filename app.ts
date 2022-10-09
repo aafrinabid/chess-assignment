@@ -1,7 +1,6 @@
 import * as dotenv from "dotenv";
 dotenv.config()
-const express:any =require('express');
-import {Request,Response} from "express"
+import express,{Request,Response} from "express"
 const app=express();
 const cors=require('cors')
 app.use(cors())
