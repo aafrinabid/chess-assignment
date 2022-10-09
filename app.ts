@@ -1,25 +1,31 @@
-const express=require('express');
+const express =require('express');
+import {Request,Response} from "express"
 const app=express();
 const cors=require('cors')
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
-const chessArray:number[][]=[
-[0,1,2,3,4,5,6,7],
-[0,1,2,3,4,5,6,7],
-[0,1,2,3,4,5,6,7],
-[0,1,2,3,4,5,6,7],
-[0,1,2,3,4,5,6,7],
-[0,1,2,3,4,5,6,7],
-[0,1,2,3,4,5,6,7],
-[0,1,2,3,4,5,6,7]
-]
-console.log(chessArray[0][7])
+
+
+const generateArray=()=>{
+    let chessArray:number[][]=[]
+    for(let i =0;i<8;i++){
+   chessArray[i]=[]
+        for(let j=0;j<8;j++){
+            chessArray[i][j]=j
+        }
+    }
+    return chessArray
+}
+const chessArray=generateArray()
+
+
 
 
 const findPossibleMove=(index:number,number:number)=>{
   let possiblePositions=[]
   //possible upwardmotion
+
     if(chessArray[index-1]!=undefined && chessArray[index-2]!=undefined){
         if(chessArray[index][number-1]!=undefined){
             let leftpostion={                                                                                                                       
@@ -99,8 +105,9 @@ return possiblePositions
 
 }
 
-app.post('/getmoves',async(req:any,res:any)=>{
+app.post('/getmoves',async(req:Request,res:Response)=>{
     try{
+        // Change varibale name
         const i=req.body.i
         const j=req.body.j
        const result= findPossibleMove(i,j)
