@@ -107,10 +107,9 @@ return possiblePositions
 
 app.post('/getmoves',async(req:Request,res:Response)=>{
     try{
-        // Change varibale name
-        const i=req.body.i
-        const j=req.body.j
-       const result= findPossibleMove(i,j)
+        const firstArrayIndex=req.body.i
+        const secondArrayIndex=req.body.j
+       const result= findPossibleMove(firstArrayIndex,secondArrayIndex)
        res.json(result)
          
     }catch{
