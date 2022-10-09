@@ -2,7 +2,7 @@ import * as dotenv from "dotenv";
 dotenv.config()
 // import express,{Request,Response} from "express"
 const express=require('express')
-// const {Request,Response} =require('express')
+import { Request,Response } from "express";
 const app=express();
 const cors=require('cors')
 app.use(cors())
@@ -109,7 +109,7 @@ return possiblePositions
 
 }
 
-app.post('/getmoves',async(req:any,res:any)=>{
+app.post('/getmoves',async(req:Request,res:Response)=>{
     try{
         const firstArrayIndex=req.body.i
         const secondArrayIndex=req.body.j
